@@ -3,7 +3,6 @@ package network
 import (
 	"bytes"
 	"encoding/binary"
-	"errors"
 )
 
 type DataPacket struct {
@@ -65,9 +64,9 @@ func newDataPacket(initialData []byte, sessionCtx *SessionContext) (*DataPacket,
 }
 
 func newDataPacketFromData(packetData []byte, sessionCtx *SessionContext) (*DataPacket, error) {
-	if len(packetData) <= 0xA || PacketType(packetData[4]) != DATA {
-		return nil, errors.New("Not data packet")
-	}
+	//if len(packetData) <= 0xA || PacketType(packetData[4]) != DATA {
+	//	return nil, errors.New("Not data packet")
+	//}
 	pck := &DataPacket{
 		Packet: Packet{
 			dataOffset: 0xA,
